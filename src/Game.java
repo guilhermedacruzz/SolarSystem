@@ -21,20 +21,20 @@ public class Game extends Canvas implements Runnable{ // Cria a Classe GameLoopi
     private boolean isRunning = false; // Estado do Loop do Jogo
 
     private JFrame frame; // Objeto da Janela
-    public static final int WIDTH = 1080; // Largura
-    public static int HEIGHT = 720; // Altura
+    public static final int WIDTH = 1366; // Largura
+    public static int HEIGHT = 768; // Altura
 
     private BufferedImage image; // BufferedImage para o fundo do jogo
 
-    private Planet planet;
-    private Moon moon;
+    private Sun sun;
+    private PlanetSystem planets;
 
     // MÉTODO CONSTRUTOR
     public Game() {
         super(); // ?????
-        this.setPlanet(new Planet((WIDTH / 2) - (Planet.WIDTH / 2), (HEIGHT / 2) - (Planet.WIDTH / 2)));
-        this.setMoon(new Moon(this.getPlanet().getX() + 75, this.getPlanet().getY()));
         this.janela(); // Cria uma Janela
+        this.setPlanets(new PlanetSystem());
+        this.setSun(new Sun((WIDTH / 2) - (Sun.WIDTH / 2), (HEIGHT / 2) - (Sun.HEIGHT / 2)));
         this.setImage(new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB)); // Cria um BufferedImage para o fundo da Janela
     }
 
@@ -71,7 +71,9 @@ public class Game extends Canvas implements Runnable{ // Cria a Classe GameLoopi
 
     //MÉTODO PARA A LÓGICA DO JOGO
     public void kick() {
-        this.getMoon().kick();
+        for(int i = 0; i < PlanetSystem.amountOfPlanet; i++){
+            this.getPlanets().getPlanet()[i].kick();
+        }
     }
 
     //MÉTODO PARA A RENDERIZAÇÃO DO JOGO
@@ -89,9 +91,10 @@ public class Game extends Canvas implements Runnable{ // Cria a Classe GameLoopi
 
         // RENDERIZANDO SPRITES
         Graphics2D g2 = (Graphics2D) g;
-        this.getPlanet().render(g2);
-        this.getMoon().render(g2, this.getPlanet());
-
+        this.getSun().render(g2);
+        for(int i = 0; i < PlanetSystem.amountOfPlanet; i++){
+            this.getPlanets().getPlanet()[i].render(g2, this.getSun());
+        }
         g.dispose(); // Método de otimização
         g = bs.getDrawGraphics(); // ???
         g.drawImage(this.getImage(), 0, 0, WIDTH, HEIGHT, null); // ???
@@ -165,11 +168,11 @@ public class Game extends Canvas implements Runnable{ // Cria a Classe GameLoopi
         this.image = image;
     }
 
-    public Planet getPlanet() { return planet; }
+    public Sun getSun() { return sun; }
 
-    public void setPlanet(Planet planet) { this.planet = planet; }
+    public void setSun(Sun sun) { this.sun = sun; }
 
-    public Moon getMoon() { return moon; }
+    public PlanetSystem getPlanets() { return planets; }
 
-    public void setMoon(Moon moon) { this.moon = moon; }
+    public void setPlanets(PlanetSystem planets) { this.planets = planets; }
 }
