@@ -63,7 +63,6 @@ public class Game extends Canvas implements Runnable{
     }
 
     public void kick() {
-        this.getSun().kick();
         for(int i = 0; i < PlanetSystem.amountOfPlanet; i++){
             this.getPlanets().getPlanet()[i].kick();
         }
