@@ -64,6 +64,7 @@ public class Game extends Canvas implements Runnable{
 
     public void kick() {
         for(int i = 0; i < PlanetSystem.amountOfPlanet; i++){
+
             this.getPlanets().getPlanet()[i].kick();
         }
     }
@@ -76,7 +77,7 @@ public class Game extends Canvas implements Runnable{
         }
 
         Graphics g = this.getImage().getGraphics();
-        g.setColor(new Color(40, 40, 40));
+        g.setColor(new Color(0, 0, 0));
         g.fillRect(0, 0, WIDTH, HEIGHT);
 
         Graphics2D g2 = (Graphics2D) g;
