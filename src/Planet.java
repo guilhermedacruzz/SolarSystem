@@ -8,7 +8,7 @@ public class Planet {
     private double eccentricity;
     public static int WIDTH = 16;
     public static int HEIGHT = 16;
-    public static int SCALE = 2;
+    public static int SCALE = 4;
     private double angle;
     private double lap;
 
@@ -33,7 +33,6 @@ public class Planet {
 
     public void render(Graphics2D graphics2D, Sun sun) {
 
-        graphics2D.setColor(Color.BLUE);
         graphics2D.rotate(Math.toRadians(this.getAngle()), (sun.getX() + 32) - this.getEccentricity(), (sun.getY() + 32) - this.getEccentricity());
         graphics2D.drawImage(this.getPlanetSrite(), this.getX(), this.getY(), WIDTH * SCALE, HEIGHT * SCALE, null);
         graphics2D.rotate(Math.toRadians(-this.getAngle()), (sun.getX() + 32) - this.getEccentricity(),(sun.getY() + 32) - this.getEccentricity());
