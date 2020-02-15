@@ -32,7 +32,7 @@ public class Game extends Canvas implements Runnable{
         super();
         this.janela();
         this.setPlanets(new PlanetSystem());
-        this.setSun(new Sun((WIDTH / 2) - (Sun.WIDTH / 2), (HEIGHT / 2) - (Sun.HEIGHT / 2)));
+        this.setSun(new Sun((WIDTH / 2) - ((Sun.WIDTH * Sun.SCALE) / 2), (HEIGHT / 2) - ((Sun.HEIGHT * Sun.SCALE) / 2)));
         this.setImage(new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB));
     }
 
@@ -63,6 +63,7 @@ public class Game extends Canvas implements Runnable{
     }
 
     public void kick() {
+        this.getSun().kick();
         for(int i = 0; i < PlanetSystem.amountOfPlanet; i++){
             this.getPlanets().getPlanet()[i].kick();
         }

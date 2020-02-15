@@ -27,6 +27,7 @@ public class Planet {
     }
 
     public void render(Graphics2D graphics2D, Sun sun) {
+
         graphics2D.setColor(Color.BLUE);
         graphics2D.rotate(Math.toRadians(this.getAngle()), (sun.getX() + 32) - this.getEccentricity(), (sun.getY() + 32) - this.getEccentricity());
         graphics2D.fillOval(this.getX(), this.getY(), WIDTH, HEIGHT);
@@ -40,9 +41,7 @@ public class Planet {
         }
     }
 
-    public double getAngle() {
-        return angle;
-    }
+    public double getAngle() { return angle; }
 
     public void setAngle(double angle) { this.angle = angle; }
 
