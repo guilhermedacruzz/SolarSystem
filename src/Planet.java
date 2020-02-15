@@ -7,19 +7,19 @@ public class Planet {
     private double eccentricity;
     public static int WIDTH = 16;
     public static int HEIGHT = 16;
-    private int angle;
+    private double angle;
     private double lap;
 
-    public Planet(int x, int y, int d, double e, int l) {
+    public Planet(int x, int y, int d, double e, double l) {
         this.setX(x + d);
         this.setY(y);
         this.setAngle(0);
         this.setEccentricity((int)(e * 100));
-        this.setLap(360 / (l / 6));
+        this.setLap(l);
     }
 
     public void kick() {
-        this.setAngle(this.getAngle() + (int)(this.getLap()));
+        this.setAngle((this.getAngle() + (this.getLap())));
 
         if(this.getAngle() > 360){
             this.setAngle(0);
@@ -30,14 +30,21 @@ public class Planet {
         graphics2D.setColor(Color.BLUE);
         graphics2D.rotate(Math.toRadians(this.getAngle()), (sun.getX() + 32) - this.getEccentricity(), (sun.getY() + 32) - this.getEccentricity());
         graphics2D.fillOval(this.getX(), this.getY(), WIDTH, HEIGHT);
-        graphics2D.rotate(Math.toRadians(-this.getAngle()), (sun.getX() + 32) - this.getEccentricity(), (sun.getY() + 32) - this.getEccentricity());
+        graphics2D.rotate(Math.toRadians(-this.getAngle()), (sun.getX() + 32) - this.getEccentricity(),(sun.getY() + 32) - this.getEccentricity());
+
+        graphics2D.setColor(Color.WHITE);
+        for(int i = 0; i <= 360; i++){
+            graphics2D.rotate(Math.toRadians(i), (sun.getX() + 32) - this.getEccentricity(), (sun.getY() + 32) - this.getEccentricity());
+            graphics2D.fillOval(this.getX(), this.getY(), 5, 5);
+            graphics2D.rotate(Math.toRadians(-i), (sun.getX() + 32) - this.getEccentricity(), (sun.getY() + 32) - this.getEccentricity());
+        }
     }
 
-    public int getAngle() {
+    public double getAngle() {
         return angle;
     }
 
-    public void setAngle(int angle) { this.angle = angle; }
+    public void setAngle(double angle) { this.angle = angle; }
 
     public int getX() {
         return x;
