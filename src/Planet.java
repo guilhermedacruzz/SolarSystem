@@ -3,16 +3,17 @@ import java.awt.image.BufferedImage;
 
 public class Planet {
 
-    private int x;
-    private int y;
-    private double eccentricity;
     public static int WIDTH = 16;
     public static int HEIGHT = 16;
     public static int SCALE = 4;
+
+    private int x;
+    private int y;
+    private double eccentricity;
     private double angle;
     private double lap;
 
-    private BufferedImage PlanetSrite;
+    private BufferedImage PlanetSprite;
 
     public Planet(int d, double e, double l, BufferedImage b) {
         this.setX((Game.WIDTH / 2) - (Sun.WIDTH / 2) + d);
@@ -20,7 +21,7 @@ public class Planet {
         this.setAngle(0);
         this.setEccentricity((int)(e * 100));
         this.setLap(l);
-        this.setPlanetSrite(b);
+        this.setPlanetSprite(b);
     }
 
     public void kick() {
@@ -34,7 +35,7 @@ public class Planet {
     public void render(Graphics2D graphics2D, Sun sun) {
 
         graphics2D.rotate(Math.toRadians(this.getAngle()), (sun.getX() + 32) - this.getEccentricity(), (sun.getY() + 32) - this.getEccentricity());
-        graphics2D.drawImage(this.getPlanetSrite(), this.getX(), this.getY(), WIDTH * SCALE, HEIGHT * SCALE, null);
+        graphics2D.drawImage(this.getPlanetSprite(), this.getX(), this.getY(), WIDTH * SCALE, HEIGHT * SCALE, null);
         graphics2D.rotate(Math.toRadians(-this.getAngle()), (sun.getX() + 32) - this.getEccentricity(),(sun.getY() + 32) - this.getEccentricity());
 
         /*
@@ -66,7 +67,7 @@ public class Planet {
 
     public void setLap(double lap) { this.lap = lap; }
 
-    public BufferedImage getPlanetSrite() { return PlanetSrite; }
+    public BufferedImage getPlanetSprite() { return PlanetSprite; }
 
-    public void setPlanetSrite(BufferedImage planetSrite) { PlanetSrite = planetSrite; }
+    public void setPlanetSprite(BufferedImage planetSprite) { PlanetSprite = planetSprite; }
 }

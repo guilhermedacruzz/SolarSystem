@@ -11,7 +11,7 @@ public class PlanetSystem {
 
         this.getPlanet()[0] = new Planet(20 * SCALE, 0.206, 6.0, new SpriteSheet("/res/planets.png").getSprite(32, 0, WIDTH, HEIGHT));
         this.getPlanet()[1] = new Planet(55 * SCALE, 0.007, 4.6, new SpriteSheet("/res/planets.png").getSprite(64, 0, WIDTH, HEIGHT));
-        this.getPlanet()[2] = new Planet(75 * SCALE, 0.517, 4, new SpriteSheet("/res/planets.png").getSprite(96, 0, WIDTH, HEIGHT));
+        this.getPlanet()[2] = new Planet(75 * SCALE, 0.517, 4.0, new SpriteSheet("/res/planets.png").getSprite(96, 0, WIDTH, HEIGHT));
         this.getPlanet()[3] = new Planet(90 * SCALE, 0.093, 3.6, new SpriteSheet("/res/planets.png").getSprite(128, 0, WIDTH, HEIGHT));
         this.getPlanet()[4] = new Planet(120 * SCALE, 0.048, 1.5, new SpriteSheet("/res/planets.png").getSprite(0, 32, WIDTH, HEIGHT));
         this.getPlanet()[5] = new Planet(140 * SCALE, 0.056, 1.3, new SpriteSheet("/res/planets.png").getSprite(32, 32, WIDTH, HEIGHT));
