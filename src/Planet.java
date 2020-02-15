@@ -10,9 +10,9 @@ public class Planet {
     private double angle;
     private double lap;
 
-    public Planet(int x, int y, int d, double e, double l) {
-        this.setX(x + d);
-        this.setY(y);
+    public Planet(int d, double e, double l) {
+        this.setX((Game.WIDTH / 2) - (Sun.WIDTH / 2) + d);
+        this.setY((Game.HEIGHT / 2) - (Sun.HEIGHT / 2));
         this.setAngle(0);
         this.setEccentricity((int)(e * 100));
         this.setLap(l);
